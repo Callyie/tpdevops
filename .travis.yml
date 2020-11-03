@@ -15,8 +15,6 @@ script:
   - docker push $user/devopsproject:httpd
   - docker push $user/devopsproject:simple-api
 
-  - mvn clean verify org.jacoco:jacoco-maven-plugin:prepare-agent install
-  sonar:sonar -Dsonar.projectKey=devops-2020
   - mvn clean verify org.jacoco:jacoco-maven-plugin:prepare-agent install sonar:sonar -Dsonar.projectKey=Callyie_tpdevops
 
   addons:
