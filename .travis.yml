@@ -9,18 +9,18 @@ jobs:
     - stage: mavenclean
       name: mavenclean
       script: mvn clean verify --file ./simple-api/pom.xml org.jacoco:jacoco-maven-plugin:prepare-agent install sonar:sonar -Dsonar.projectKey=orlanekey
-
+    if: branch = dev
     - stage: pushondocker
       name: dockerlogin
       script:
-      - docker login -u $user -p $pwd
-      - docker build -t $user/devopsproject:database database
-      - docker build -t $user/devopsproject:httpd httpd
-      - docker build -t $user/devopsproject:simple-api simple-api
-      - docker push $user/devopsproject:database
-      - docker push $user/devopsproject:httpd
-      - docker push $user/devopsproject:simple-api
-      if: branch = dev
+       - docker login -u $user -p $pwd
+       - docker build -t $user/devopsproject:database database
+       - docker build -t $user/devopsproject:httpd httpd
+       - docker build -t $user/devopsproject:simple-api simple-api
+       - docker push $user/devopsproject:database
+       - docker push $user/devopsproject:httpd
+       - docker push $user/devopsproject:simple-api
+     if: branch = dev
 
     cache:
       directories:
