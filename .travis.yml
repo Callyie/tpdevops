@@ -2,19 +2,19 @@ language: java
 script:
   - mvn clean verify --file ./simple-api/pom.xml
 
+#connexion à Docker
   - docker login -u $user -p $pwd
 
-  - docker-compose up
+  #Build
+  - docker build -t $user/devopsproject:database database
+  - docker build -t $user/devopsproject:httpd httpd
+  - docker build -t $user/devopsproject:simple api simple api
 
-  - docker tag tg $user/devopsproject
-  - docker push $user/devopsproject:tg
+  #Publication des images
+  - docker push $user/devopsproject:database database
+  - docker push $user/devopsproject:httpd httpd
+  - docker push $user/devopsproject:simple api simple api
 
-cache:
-directories:
-  -$HOME/ .m2
-
-services:
-  -docker
 
 
 
