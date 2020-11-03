@@ -11,9 +11,9 @@ script:
   - docker build -t $user/devopsproject:simple api simple api
 
   #Publication des images
-  - docker push $user/devopsproject:database database
-  - docker push $user/devopsproject:httpd httpd
-  - docker push $user/devopsproject:simple api simple api
+  - docker push $user/devopsproject:database
+  - docker push $user/devopsproject:httpd
+  - docker push $user/devopsproject:simple api
 
 
 
