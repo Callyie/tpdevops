@@ -12,28 +12,28 @@ jobs:
       if: branch = dev
 
     - stage: pushondocker
-      name: dockerlogin
+      name: docker
       script:
-       - docker login -u $user -p $pwd
-       - docker build -t $user/devopsproject:database database
-       - docker build -t $user/devopsproject:httpd httpd
-       - docker build -t $user/devopsproject:simple-api simple-api
-       - docker push $user/devopsproject:database
-       - docker push $user/devopsproject:httpd
-       - docker push $user/devopsproject:simple-api
+        - docker login -u $user -p $pwd
+        - docker build -t $user/devopsproject:database database
+        - docker build -t $user/devopsproject:httpd httpd
+        - docker build -t $user/devopsproject:simple-api simple-api
+        - docker push $user/devopsproject:database
+        - docker push $user/devopsproject:httpd
+        - docker push $user/devopsproject:simple-api
       if: branch = dev
 
-    cache:
-      directories:
-        - $Home/.m2
+cache:
+  directories:
+    - $Home/.m2
 
-    services:
-      - docker
+services:
+  - docker
 
-    addons:
-      sonarcloud:
-        organization: "devopsorga"
-        token: $tokenorlane
+addons:
+   sonarcloud:
+   organization: "devopsorga"
+   token: $tokenorlane
 
 
 ##connexion à Docker
