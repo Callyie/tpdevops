@@ -13,7 +13,7 @@ script:
   #Publication des images
   - docker push $user/devopsproject:database
   - docker push $user/devopsproject:httpd
-  - docker push $user/devopsproject:simple api
+  - docker push $user/devopsproject:simple-api
 
 
 
