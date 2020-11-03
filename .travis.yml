@@ -31,9 +31,9 @@ services:
   - docker
 
 addons:
-   sonarcloud:
-   organization: "devopsorga"
-   token: $tokenorlane
+  sonarcloud:
+    organization: "devopsorga"
+    token: $tokenorlane
 
 
 ##connexion à Docker
