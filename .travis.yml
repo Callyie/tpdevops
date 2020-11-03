@@ -9,7 +9,8 @@ jobs:
     - stage: mavenclean
       name: mavenclean
       script: mvn clean verify --file ./simple-api/pom.xml org.jacoco:jacoco-maven-plugin:prepare-agent install sonar:sonar -Dsonar.projectKey=orlanekey
-    if: branch = dev
+      if: branch = dev
+
     - stage: pushondocker
       name: dockerlogin
       script:
@@ -20,7 +21,7 @@ jobs:
        - docker push $user/devopsproject:database
        - docker push $user/devopsproject:httpd
        - docker push $user/devopsproject:simple-api
-     if: branch = dev
+      if: branch = dev
 
     cache:
       directories:
