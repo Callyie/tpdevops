@@ -1,7 +1,7 @@
 language: java
 script:
   - cd ./simple-api/
-  - mvn clean verify org.jacoco:jacoco-maven-plugin:prepare-agent install sonar:sonar -Dsonar.projectKey=Callyie_tpdevops
+  - mvn clean verify org.jacoco:jacoco-maven-plugin:prepare-agent install sonar:sonar -Dsonar.projectKey=orlanekey
   - cd ..
 
 #connexion à Docker
@@ -17,14 +17,18 @@ script:
   - docker push $user/devopsproject:httpd
   - docker push $user/devopsproject:simple-api
 
- cache:
-   directories:
-     -$Home/.m
+cache:
+  directories:
+    - $Home/.m2
 
-  addons:
-    sonarcloud:
-      organization: "callyie-sc"
-      token: "$token-sc"
+services:
+  - docker
+
+addons:
+  sonarcloud:
+    organization: "devopsorga"
+    token: $tokenorlane
+
 
 
 
