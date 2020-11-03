@@ -1,32 +1,64 @@
 language: java
-script:
-  - mvn clean verify --file ./simple-api/pom.xml org.jacoco:jacoco-maven-plugin:prepare-agent install sonar:sonar -Dsonar.projectKey=orlanekey
+
+stages:
+  - mavenclean
+  - pushondocker
+
+jobs:
+  include:
+    - stage: mavenclean
+      name: mavenclean
+      script: mvn clean verify --file ./simple-api/pom.xml org.jacoco:jacoco-maven-plugin:prepare-agent install sonar:sonar -Dsonar.projectKey=orlanekey
+
+    - stage: pushondocker
+      name: dockerlogin
+      script:
+      - docker login -u $user -p $pwd
+      - docker build -t $user/devopsproject:database database
+      - docker build -t $user/devopsproject:httpd httpd
+      - docker build -t $user/devopsproject:simple-api simple-api
+      - docker push $user/devopsproject:database
+      - docker push $user/devopsproject:httpd
+      - docker push $user/devopsproject:simple-api
+      if: branch = main
+
+    cache:
+      directories:
+        - $Home/.m2
+
+    services:
+      - docker
+
+    addons:
+      sonarcloud:
+        organization: "devopsorga"
+        token: $tokenorlane
 
 
-#connexion à Docker
-  - docker login -u $user -p $pwd
-
-  #Build
-  - docker build -t $user/devopsproject:database database
-  - docker build -t $user/devopsproject:httpd httpd
-  - docker build -t $user/devopsproject:simple-api simple-api
-
-  #Publication des images
-  - docker push $user/devopsproject:database
-  - docker push $user/devopsproject:httpd
-  - docker push $user/devopsproject:simple-api
-
-cache:
-  directories:
-    - $Home/.m2
-
-services:
-  - docker
-
-addons:
-  sonarcloud:
-    organization: "devopsorga"
-    token: $tokenorlane
+##connexion à Docker
+#  - docker login -u $user -p $pwd
+#
+#  #Build
+#  - docker build -t $user/devopsproject:database database
+#  - docker build -t $user/devopsproject:httpd httpd
+#  - docker build -t $user/devopsproject:simple-api simple-api
+#
+#  #Publication des images
+#  - docker push $user/devopsproject:database
+#  - docker push $user/devopsproject:httpd
+#  - docker push $user/devopsproject:simple-api
+#
+#cache:
+#  directories:
+#    - $Home/.m2
+#
+#services:
+#  - docker
+#
+#addons:
+#  sonarcloud:
+#    organization: "devopsorga"
+#    token: $tokenorlane
 
 
 
