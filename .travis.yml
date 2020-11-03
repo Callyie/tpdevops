@@ -22,7 +22,7 @@ script:
  addons:
    sonarcloud:
      organization: "callyie-sc"
-     token:
-       secure: "$token-sc"
+     token: "$token-sc"
+
 
 
