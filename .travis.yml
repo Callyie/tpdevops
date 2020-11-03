@@ -1,6 +1,8 @@
 language: java
 script:
-  - mvn clean verify --file ./simple-api/pom.xml
+  - cd ./simple-api/
+  - mvn clean verify org.jacoco:jacoco-maven-plugin:prepare-agent install sonar:sonar -Dsonar.projectKey=Callyie_tpdevops
+  -cd ..
 
 #connexion à Docker
   - docker login -u $user -p $pwd
@@ -15,7 +17,9 @@ script:
   - docker push $user/devopsproject:httpd
   - docker push $user/devopsproject:simple-api
 
-  - mvn clean verify org.jacoco:jacoco-maven-plugin:prepare-agent install sonar:sonar -Dsonar.projectKey=Callyie_tpdevops
+ cache:
+   directories:
+     -$Home.m
 
   addons:
     sonarcloud:
