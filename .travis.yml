@@ -8,7 +8,7 @@ script:
   #Build
   - docker build -t $user/devopsproject:database database
   - docker build -t $user/devopsproject:httpd httpd
-  - docker build -t $user/devopsproject:simple api simple api
+  - docker build -t $user/devopsproject:simple-api simple-api
 
   #Publication des images
   - docker push $user/devopsproject:database
