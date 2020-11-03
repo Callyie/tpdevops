@@ -1,6 +1,6 @@
 language: java
 script:
-  - mvn clean verify --file ./simple-api/pom.xl org.jacoco:jacoco-maven-plugin:prepare-agent install sonar:sonar -Dsonar.projectKey=orlanekey
+  - mvn clean verify --file ./simple-api/pom.xml org.jacoco:jacoco-maven-plugin:prepare-agent install sonar:sonar -Dsonar.projectKey=orlanekey
 
 
 #connexion à Docker
