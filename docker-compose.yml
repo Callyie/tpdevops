@@ -1,7 +1,7 @@
 version: '3.3'
 services:
 
-  front:
+  fr:
     container_name: front
     build: ./front
     networks:
