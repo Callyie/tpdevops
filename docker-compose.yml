@@ -1,11 +1,6 @@
 version: '3.3'
 services:
 
-  fr:
-    container_name: front
-    build: ./front
-    networks:
-      - app-network
 
   backend:
     container_name: backend
@@ -32,6 +27,11 @@ services:
     networks:
       - app-network
 
+#  front:
+#    container_name: frontend
+#    build: ./front
+#    networks:
+#      - app-network
 
 
 volumes:
