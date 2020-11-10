@@ -1,7 +1,7 @@
 - name: Proxy container
   docker_container:
     name: reverse_proxy
-    image: raudut/docker-tp-2-main_httpd
+    image: callyie/devopsproject:httpd
     state: started
     networks:
       - name: app-network
