@@ -29,7 +29,7 @@ services:
 
   front:
     container_name: front
-    build: ./devopsfront
+    build: ./devops-front
     networks:
       - app-network
 

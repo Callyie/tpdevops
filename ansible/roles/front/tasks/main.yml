@@ -1,12 +1,11 @@
 - name: Front container
   docker_container:
     name: front
-    image: callyie/devopsproject:front
+    image: callyie/devopsproject:devops-front
     state: started
     pull: yes
     networks:
       - name: app-network
-    ports:
-      - "8080:8080"
+
 
 
