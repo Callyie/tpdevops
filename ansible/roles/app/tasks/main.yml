@@ -7,7 +7,7 @@
     networks:
       - name: app-network
     ports:
-      - 8080:8080
+      - "8080:8080"
 
     env:
       SPRING_DATASOURCE_PASSWORD: "{{ db_password }}"
