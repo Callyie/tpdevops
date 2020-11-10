@@ -3,6 +3,7 @@
     name: database
     image: callyie/devopsproject:database
     state: started
+    pull: yes
     networks:
       - name: app-network
     env:

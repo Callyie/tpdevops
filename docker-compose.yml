@@ -27,11 +27,11 @@ services:
     networks:
       - app-network
 
-#  front:
-#    container_name: frontend
-#    build: ./front
-#    networks:
-#      - app-network
+  front:
+    container_name: front
+    build: ./front
+    networks:
+      - app-network
 
 
 volumes:

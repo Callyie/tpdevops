@@ -3,6 +3,7 @@
     name: backend
     image: callyie/devopsproject:simple-api
     state: started
+    pull: yes
     networks:
       - name: app-network
 

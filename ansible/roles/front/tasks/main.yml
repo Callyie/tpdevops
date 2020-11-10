@@ -3,6 +3,7 @@
     name: front
     image: callyie/devopsproject:front
     state: started
+    pull: yes
     networks:
       - name: app-network
     ports:
