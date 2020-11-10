@@ -6,8 +6,6 @@ services:
     build: ./front
     networks:
       - app-network
-    depends_on:
-      - backend
 
   backend:
     container_name: backend
