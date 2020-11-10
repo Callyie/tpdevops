@@ -18,6 +18,7 @@ jobs:
         - docker build -t $user/devopsproject:database database
         - docker build -t $user/devopsproject:httpd httpd
         - docker build -t $user/devopsproject:simple-api simple-api
+        - docker build -t $user/devopsproject:front front
         - docker push $user/devopsproject:database
         - docker push $user/devopsproject:httpd
         - docker push $user/devopsproject:simple-api

@@ -1,0 +1,9 @@
+- name: Front container
+  docker_container:
+    name: front
+    image: callyie/devopsproject:front
+    state: started
+    networks:
+      - name: app-network
+
+
