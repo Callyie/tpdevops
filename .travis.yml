@@ -22,7 +22,7 @@ jobs:
         - docker push $user/devopsproject:database
         - docker push $user/devopsproject:httpd
         - docker push $user/devopsproject:simple-api
-        - docker push $user/devopsproject:front
+        - docker push $user/devopsproject:devops-front
       if: branch = dev
 
 cache:
